@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://benchmark.android.andreysolovyov.ru/" xmlns:tns="http://benchmark.android.andreysolovyov.ru/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="benchmarkResults" type="tns:benchmarkResults"/>
+
+  <xs:element name="submitResults" type="tns:submitResults"/>
+
+  <xs:element name="submitResultsResponse" type="tns:submitResultsResponse"/>
+
+  <xs:complexType name="submitResults">
+    <xs:sequence>
+      <xs:element name="newResults" type="tns:benchmarkResults" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="benchmarkResults">
+    <xs:sequence>
+      <xs:element name="model" type="xs:string"/>
+      <xs:element name="intOps" type="xs:int"/>
+      <xs:element name="floatOps" type="xs:int"/>
+      <xs:element name="doubleOps" type="xs:int"/>
+      <xs:element name="overallMark" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="submitResultsResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:benchmarkResults" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+

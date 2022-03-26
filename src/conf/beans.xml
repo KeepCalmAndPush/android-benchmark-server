@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://java.sun.com/xml/ns/javaee"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/beans_1_0.xsd">
+</beans>
+<!--
+<v:Envelope xmlns:i="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:d="http://www.w3.org/2001/XMLSchema"
+xmlns:c="http://schemas.xmlsoap.org/soap/encoding/"
+xmlns:v="http://schemas.xmlsoap.org/soap/envelope/">
+    <v:Header />
+    <v:Body>
+        <n0:addResults id="o0" c:root="1" xmlns:n0="http://benchmark.android.andreysolovyov.ru/">
+            <n0:newResults i:type="n0:newResults">
+                <model i:type="d:string">XXXYYY</model>
+                <intOps i:type="d:int">1000</intOps>
+                <floatOps i:type="d:int">1000</floatOps>
+                <doubleOps i:type="d:int">1000</doubleOps>
+                <overallMark i:type="d:int">1900</overallMark>
+            </n0:newResults>
+        </n0:addResults>
+    </v:Body>
+</v:Envelope>
+-->

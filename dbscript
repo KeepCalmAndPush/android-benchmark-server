@@ -1,0 +1,66 @@
+create TABLE RESULTS(id int primary key auto_increment, model varchar(50) not null, 
+intOps int not null, floatOps int not null, doubleOps int not null, overallMark int not null);
+
+insert into RESULTS (model,  intOps, floatOps, doubleOps, overallMark) values('Digma', 123, 234, 345, 1009);
+insert into RESULTS (model,  intOps, floatOps, doubleOps, overallMark) values('Samsung Galaxy', 123, 234, 345, 990);
+insert into RESULTS (model,  intOps, floatOps, doubleOps, overallMark) values('iPhone 4', 123, 234, 345, 890);
+insert into RESULTS (model,  intOps, floatOps, doubleOps, overallMark) values('iPhone 5', 123, 234, 345, 790);
+insert into RESULTS (model,  intOps, floatOps, doubleOps, overallMark) values('HTC One', 123, 234, 345, 690);
+insert into RESULTS (model,  intOps, floatOps, doubleOps, overallMark) values('HTC Legend', 123, 234, 345, 1190);
+insert into RESULTS (model,  intOps, floatOps, doubleOps, overallMark) values('Google Nexus 4', 123, 234, 345, 1290);
+insert into RESULTS (model,  intOps, floatOps, doubleOps, overallMark) values('Google Nexus 5', 123, 234, 345, 1390);
+insert into RESULTS (model,  intOps, floatOps, doubleOps, overallMark) values('Google Nexus 7', 123, 234, 345, 1490);
+
+
+select * from RESULTS where overallMark > 1000 group by model order by overallMark desc limit 3;
+select * from RESULTS where overallMark < 1000 group by model order by overallMark desc limit 3;
+
+"Digma", 123, 234, 345, 1000
+"Samsung Galaxy", 123, 234, 345, 900
+"iPhone 4", 123, 234, 345, 800
+"iPhone 5", 123, 234, 345, 700
+"HTC One", 123, 234, 345, 600
+"HTC Legend', 123, 234, 345, 1100
+'Google Nexus 4', 123, 234, 345, 1200
+'Google Nexus 5', 123, 234, 345, 1300
+'Google Nexus 7', 123, 234, 345, 1400
+
+Супер-квери для выборки сразу всей таблицы и меньше и больше
+(SELECT * from RESULTS where overallMark > 1000 limit 3)
+UNION
+(SELECT * from RESULTS where overallMark <= 1000 limit 4);
+
+
+SELECT model, overallMark, AVG(overallMark) AS overall
+FROM RESULTS
+GROUP BY overallMark, model;
+
+Божественное квери со средним:
+SELECT model, AVG(intOps) AS intOps, AVG(floatOps) AS floatOps, 
+AVG(doubleOps) AS doubleOps, AVG(overallMark) AS overall  FROM RESULTS GROUP BY model;
+
+
+(SELECT model, AVG(intOps) AS intOps, AVG(floatOps) AS floatOps,
+AVG(doubleOps) AS doubleOps, AVG(overallMark) AS overall  FROM RESULTS where overallMark > 1000 GROUP BY model order by overall desc limit 3 )
+UNION ALL
+(SELECT model, AVG(intOps) AS intOps, AVG(floatOps) AS floatOps,
+AVG(doubleOps) AS doubleOps, AVG(overallMark) AS overall  FROM RESULTS where overallMark < 1000 GROUP BY model order by overall desc limit 3);
+
+
+(SELECT model, "
+            + "AVG(intOps) AS intOps, AVG(floatOps) AS floatOps, AVG(doubleOps) "
+            + "AS doubleOps, AVG(overallMark) AS overallMark  FROM RESULTS "
+            + "where overallMark > 1000 GROUP BY model order by overallMark desc limit 5 ) "
+            + "UNION ALL (SELECT model, AVG(intOps) AS intOps, AVG(floatOps) "
+            + "AS floatOps, AVG(doubleOps) AS doubleOps, AVG(overallMark) "
+            + "AS overallMark  FROM RESULTS where overallMark < 1000 "
+            + "GROUP BY model order by overallMark desc limit 5)
+
+
+(SELECT model, AVG(intOps) AS intOps, AVG(floatOps) AS floatOps,
+AVG(doubleOps) AS doubleOps, AVG(overallMark) AS overall  FROM RESULTS where
+overallMark > 1000 GROUP BY model order by overall desc limit 3 )
+UNION ALL
+(SELECT model, AVG(intOps) AS intOps, AVG(floatOps) AS floatOps,
+AVG(doubleOps) AS doubleOps, AVG(overallMark) AS overall  FROM RESULTS where
+overallMark < 1000 GROUP BY model order by overall desc limit 3);
